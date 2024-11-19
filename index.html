@@ -2,13 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Pokémon</title>
-    <link rel="stylesheet" href="main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon List</title>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
-<h1> Pokémon database </h1>
+<header>
+    <h1>All Pokémon</h1>
+</header>
 
+<section id="pokemon-table-container">
+    <table id="pokemon-table">
+        <thead>
+        <tr>
+            <th>Pokedex Number</th>
+            <th>Name</th>
+            <th>Speed</th>
+            <th>Special Defence</th>
+            <th>Special Attack</th>
+            <th>Defence</th>
+            <th>Attack</th>
+            <th>Health Points</th>
+            <th>Primary Type</th>
+            <th>Secondary Type</th>
+        </tr>
+        </thead>
+        <tbody id="pokemon-table-body"></tbody>
+    </table>
+</section>
 
-<script src="main.js"></script>
+<script src="main.js" defer></script>
 </body>
 </html>

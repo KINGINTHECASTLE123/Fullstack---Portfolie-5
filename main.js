@@ -1,31 +1,78 @@
-const express = require("express");
-//npm install mysql2 --save
-const mysql = require("mysql2");
-//npm install cors --save
-const cors = require("cors");
 
-const app = express();
-const port = 3000;
+// Fetch Pokémon data from the API
+fetch('http://localhost:3000/pokemon/all')
+    .then(response => response.json())
+    .then(data => {
+        displayPokemon(data);
+    })
+    .catch(error => console.error('Error fetching data:', error));
 
-app.use(cors());
-console.log('hello')
-//Host, user, password database
-const connection = mysql.createConnection({
-    host: process.env.DBHOST, // process.env.DBHOST,
-    user: process.env.DBUSER, //process.env.DBUSER,
-    password: process.env.DBPASSWORD, //process.env.DBPASSWORD,
-    database: process.env.DBNAME//process.env.DBNAME,
-})
+// Function to display Pokémon data in a table
+function displayPokemon(pokemonList) {
+    const tableBody = document.getElementById('pokemon-table-body');
 
-app.listen(port, () =>{
-    console.log(`Application is now running on port ${port}`);
-});
+    pokemonList.forEach(pokemon => {
+        // Create a row for each Pokémon
+        const row = document.createElement('tr');
 
-app.get('/pokemon/all',(req, res)=>{
-    connection.query('SELECT * FROM pokemon',(error,results)=>{
-        res.send(results);
+        // add pokedex_number
+        const pokedexCell = document.createElement('td');
+        pokedexCell.textContent = pokemon.pokedex_number;
+
+        // Add Pokémon name
+        const nameCell = document.createElement('td');
+        nameCell.textContent = pokemon.name;
+
+        // add speed
+        const speedCell = document.createElement('td');
+        speedCell.textContent = pokemon.speed;
+
+        // add special_defence
+        const specialDefenceCell = document.createElement('td');
+        specialDefenceCell.textContent = pokemon.special_defence;
+
+        //add special_attack
+        const specialAttackCell = document.createElement('td');
+        specialAttackCell.textContent = pokemon.special_attack;
+
+        //add defence
+        const defenceCell = document.createElement('td');
+        defenceCell.textContent = pokemon.defence;
+
+        // add attack
+        const attackCell = document.createElement('td');
+        attackCell.textContent = pokemon.attack;
+
+        // add hp
+        const healthCell = document.createElement('td');
+        healthCell.textContent = pokemon.hp
+
+        // Add Pokémon primary type
+        const primaryTypeCell = document.createElement('td');
+        primaryTypeCell.textContent = pokemon.primary_type;
+
+        // add secondary type
+        const secondaryTypeCell = document.createElement('td');
+        secondaryTypeCell.textContent = pokemon.secondary_type;
+
+        // Append cells to the row
+        row.appendChild(pokedexCell);
+        row.appendChild(nameCell);
+        row.appendChild(speedCell);
+        row.appendChild(specialDefenceCell);
+        row.appendChild(specialAttackCell);
+        row.appendChild(defenceCell);
+        row.appendChild(attackCell);
+        row.appendChild(healthCell);
+        row.appendChild(primaryTypeCell);
+        row.appendChild(secondaryTypeCell);
+
+
+
+        // Append row to the table body
+        tableBody.appendChild(row);
     });
-});
+}
 
 
 
