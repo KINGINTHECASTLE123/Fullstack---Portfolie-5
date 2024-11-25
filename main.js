@@ -1,15 +1,19 @@
+// Fetch Pokémon data from the API
+let allPokemon = [];
 
 // Fetch Pokémon data from the API
 fetch('http://localhost:3000/pokemon/all')
     .then(response => response.json())
     .then(data => {
-        displayPokemon(data);
+        allPokemon = data; // Save data globally for searching
+        displayPokemon(allPokemon);
     })
     .catch(error => console.error('Error fetching data:', error));
 
 // Function to display Pokémon data in a table
 function displayPokemon(pokemonList) {
     const tableBody = document.getElementById('pokemon-table-body');
+    tableBody.innerHTML = ''; // Clear the table before adding new rows
 
     pokemonList.forEach(pokemon => {
         // Create a row for each Pokémon
@@ -74,6 +78,19 @@ function displayPokemon(pokemonList) {
     });
 }
 
+// Search function
+document.getElementById('search').addEventListener('input', function (e) {
+    const searchQuery = e.target.value.toLowerCase();
 
+    // Filter Pokémon list based on name or type
+    const filteredPokemon = allPokemon.filter(pokemon => {
+        return (
+            pokemon.name.toLowerCase().includes(searchQuery) ||
+            (pokemon.primary_type && pokemon.primary_type.toLowerCase().includes(searchQuery)) ||
+            (pokemon.secondary_type && pokemon.secondary_type.toLowerCase().includes(searchQuery))
+        );
+    });
 
-
+    // Update the displayed Pokémon
+    displayPokemon(filteredPokemon);
+});
