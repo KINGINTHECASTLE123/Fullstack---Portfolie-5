@@ -1,29 +1,34 @@
 /* General styles */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f9f9f9;
+    background-color: lightyellow;
     margin: 0;
     padding: 0;
 }
 
 header {
-    background-color: pink;
-    color: white;
-    text-align: center;
-    padding: 20px 0;
+    background-image: url('https://www.impericon.com/cdn/shop/collections/20161101_pokemon_mobile_2x_0e5e6082-2584-43d3-aba2-6f51082fee6a.jpg?v=1720177600');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 250px;
 }
 
-h1 {
-    margin: 0;
+#search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    height: 50px;
 }
 
-header input#search {
-    margin-top: 10px;
+#search {
     padding: 10px;
     width: 50%;
     font-size: 16px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    text-align: center;
 }
 
 /* Table Styles */
@@ -72,4 +77,95 @@ tr:hover {
         width: 40px;
         height: 40px;
     }
+}
+
+.type-button {
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 1em;
+    color: white;
+    text-transform: uppercase;
+    pointer-events: none;
+    cursor: default;
+}
+
+.type-grass {
+    background-color: lawngreen;
+}
+
+.type-poison {
+    background-color: mediumpurple;
+}
+
+.type-fire {
+    background-color: orange;
+}
+
+.type-water {
+    background-color: lightblue;
+}
+
+.type-electric {
+    background-color: yellow;
+}
+
+.type-ice {
+    background-color: aquamarine;
+}
+
+.type-psychic {
+    background-color: khaki;
+}
+
+.type-rock {
+    background-color: black;
+}
+
+.type-fighting {
+    background-color: darkred;
+}
+
+.type-flying {
+    background-color: indigo;
+}
+
+.type-ground {
+    background-color: darkolivegreen;
+}
+
+.type-null {
+    background-color: darkgrey;
+}
+
+.type-bug {
+    background-color: greenyellow;
+}
+
+.type-normal {
+    background-color: deeppink;
+}
+
+.type-ghost {
+    background-color: dimgray;
+}
+
+.type-fairy {
+    background-color: blue;
+}
+
+.type-steel {
+    background-color: darkslategrey;
+}
+
+.type-dragon {
+    background-color: indianred;
+}
+
+#pokemon-table img {
+    border: none;
+    display: block;
+    margin: 0 auto;
+    width: 70px;
+    height: 70px;
 }

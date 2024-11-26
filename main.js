@@ -16,8 +16,13 @@ function displayPokemon(pokemonList) {
     tableBody.innerHTML = ''; // Clear the table before adding new rows
 
     pokemonList.forEach(pokemon => {
-        // Create a row for each Pokémon
         const row = document.createElement('tr');
+        const imageCell = document.createElement('td');
+        const image = document.createElement('img');
+        image.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.pokedex_number}.png`;
+        image.alt = pokemon.name;
+        imageCell.appendChild(image);
+        row.appendChild(imageCell)
 
         // add pokedex_number
         const pokedexCell = document.createElement('td');
@@ -53,11 +58,17 @@ function displayPokemon(pokemonList) {
 
         // Add Pokémon primary type
         const primaryTypeCell = document.createElement('td');
-        primaryTypeCell.textContent = pokemon.primary_type;
+        const primaryTypeButton = document.createElement('button');
+        primaryTypeButton.textContent = pokemon.primary_type;
+        primaryTypeButton.classList.add('type-button', `type-${pokemon.primary_type.toLowerCase()}`);
+        primaryTypeCell.appendChild(primaryTypeButton);
 
         // add secondary type
         const secondaryTypeCell = document.createElement('td');
-        secondaryTypeCell.textContent = pokemon.secondary_type;
+        const secondaryTypeButton = document.createElement('button');
+        secondaryTypeButton.textContent = pokemon.secondary_type;
+        secondaryTypeButton.classList.add('type-button', `type-${pokemon.secondary_type.toLowerCase()}`);
+        secondaryTypeCell.appendChild(secondaryTypeButton);
 
         // Append cells to the row
         row.appendChild(pokedexCell);
@@ -94,3 +105,4 @@ document.getElementById('search').addEventListener('input', function (e) {
     // Update the displayed Pokémon
     displayPokemon(filteredPokemon);
 });
+
