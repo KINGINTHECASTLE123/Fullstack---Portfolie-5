@@ -6,6 +6,7 @@ body {
     padding: 0;
 }
 
+
 header {
     background-image: url('https://www.impericon.com/cdn/shop/collections/20161101_pokemon_mobile_2x_0e5e6082-2584-43d3-aba2-6f51082fee6a.jpg?v=1720177600');
     background-size: cover;
@@ -38,6 +39,13 @@ header {
     justify-content: center;
 }
 
+#pokemon-table {
+    overflow-x: auto; /* Tillad vandret scrolling */
+    overflow-y: hidden; /* Undgå lodret scrolling */
+    width: 100%; /* Sørg for, at tabellen tilpasses */
+    max-width: 1200px; /* Begræns bredden, hvis nødvendigt */
+}
+
 table {
     width: 100%;
     max-width: 1200px;
@@ -52,31 +60,13 @@ th, td {
     border-bottom: 1px solid #ddd;
 }
 
-th {
+.pokemon-table th {
     background-color: #0077cc;
     color: white;
 }
 
-td img {
-    width: 50px;
-    height: 50px;
-}
-
 tr:hover {
     background-color: #f1f1f1;
-}
-
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-    th, td {
-        font-size: 14px;
-        padding: 10px;
-    }
-
-    td img {
-        width: 40px;
-        height: 40px;
-    }
 }
 
 .type-button {
